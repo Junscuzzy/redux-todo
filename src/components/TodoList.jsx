@@ -1,13 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import TodoItem from './TodoItem'
 
-const TodoList = ({ todos }) => (
+const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
   <ul className="list pa0">
     {todos.map((todo, index) => (
-      <TodoItem key={todo.id} index={index} {...todo} />
+      <TodoItem
+        key={todo.id}
+        toggleTodo={id => toggleTodo(id)}
+        deleteTodo={id => deleteTodo(id)}
+        index={index}
+        {...todo}
+      />
     ))}
   </ul>
 )
@@ -19,23 +24,9 @@ TodoList.propTypes = {
       text: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  toggleTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 }
 
-const getVisibleTodos = (todos, filter) => {
-  switch (filter) {
-    case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed)
-    case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed)
-    case 'SHOW_ALL':
-    default:
-      return todos
-  }
-}
-
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
-})
-
-export default connect(mapStateToProps)(TodoList)
+export default TodoList

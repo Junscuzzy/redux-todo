@@ -1,23 +1,14 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 
-import TodoList from './TodoList'
-import AddTodo from './AddTodo'
-import FilterBar from './FilterBar'
+import TodoList from '../containers/TodoList'
+import AddTodo from '../containers/AddTodo'
+import FilterBar from '../containers/FilterBar'
 import Background from '../images/wood.jpeg'
+import SEO from './SEO'
 
 const App = () => (
   <>
-    <Helmet>
-      <link
-        href="https://fonts.googleapis.com/css?family=Caveat&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
-      />
-    </Helmet>
+    <SEO />
     <main
       className="vh-100 vw-100 cover bg-center flex flex-column justify-center"
       style={{

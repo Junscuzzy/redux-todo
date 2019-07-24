@@ -1,19 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { VisibilityFilters, setVisibilityFilter } from '../actions'
-import { button } from '../tachyons'
+import { VisibilityFilters } from '../actions'
+import { button } from '../utils/tachyons'
 
 const { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } = VisibilityFilters
 
-const FilterBar = props => {
-  const { filter, count } = props
-
-  function select(action) {
-    props.setVisibilityFilter(action)
-  }
-
+const FilterBar = ({ filter, count, setVisibilityFilter }) => {
+  const select = action => setVisibilityFilter(action)
   return (
     <div className="flex flex-wrap justify-between">
       {filter !== SHOW_COMPLETED && (
@@ -55,18 +49,4 @@ FilterBar.propTypes = {
   setVisibilityFilter: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-  filter: state.visibilityFilter,
-  count: {
-    all: state.todos.length,
-    active: state.todos.filter(el => !el.completed).length,
-    completed: state.todos.filter(el => el.completed).length
-  }
-})
-
-const mapDispatchToProps = { setVisibilityFilter }
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FilterBar)
+export default FilterBar

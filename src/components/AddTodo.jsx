@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { addTodo } from '../actions'
-import { button } from '../tachyons'
+import { button } from '../utils/tachyons'
 
-const AddTodo = props => {
+const AddTodo = ({ addTodo }) => {
   const [text, setText] = useState('')
   const submit = () => {
-    props.addTodo(text)
+    addTodo(text)
     setText('')
   }
 
@@ -35,9 +33,4 @@ AddTodo.propTypes = {
   addTodo: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = { addTodo }
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddTodo)
+export default AddTodo

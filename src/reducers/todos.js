@@ -1,17 +1,8 @@
-import { combineReducers } from 'redux'
-
 import uniqid from 'uniqid'
-import {
-  VisibilityFilters,
-  ADD_TODO,
-  TOGGLE_TODO,
-  DELETE_TODO,
-  SET_VISIBILITY_FILTER
-} from './actions'
 
-const { SHOW_ALL } = VisibilityFilters
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from '../actions'
 
-function todos(state = [], action) {
+export default function todos(state = [], action) {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -35,19 +26,3 @@ function todos(state = [], action) {
       return state
   }
 }
-
-function visibilityFilter(state = SHOW_ALL, action) {
-  switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return action.filter
-    default:
-      return state
-  }
-}
-
-const rootReducer = combineReducers({
-  visibilityFilter,
-  todos
-})
-
-export default rootReducer

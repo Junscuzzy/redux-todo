@@ -1,20 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-
-import { deleteTodo, toggleTodo } from '../actions'
 
 const buttonReset = {
   background: 'none',
   border: 'none'
 }
 
-const TodoItem = ({ id, text, completed, index, toggTodo, delTodo }) => (
+const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => (
   <li className="f3 pv1 flex justify-between">
     <button
       type="button"
       className="link dim pointer"
-      onClick={() => toggTodo(id)}
+      onClick={() => toggleTodo(id)}
       style={{
         ...buttonReset,
         textDecoration: completed ? 'line-through' : 'none'
@@ -27,7 +24,7 @@ const TodoItem = ({ id, text, completed, index, toggTodo, delTodo }) => (
       style={buttonReset}
       className="link dim pointer"
       title="Delete"
-      onClick={() => delTodo(id)}
+      onClick={() => deleteTodo(id)}
     >
       x
     </button>
@@ -39,16 +36,8 @@ TodoItem.propTypes = {
   text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
-  toggTodo: PropTypes.func.isRequired,
-  delTodo: PropTypes.func.isRequired
+  toggleTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = {
-  delTodo: deleteTodo,
-  toggTodo: toggleTodo
-}
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(TodoItem)
+export default TodoItem
