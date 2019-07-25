@@ -4,6 +4,7 @@
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
+export const RESET_ORDER = 'RESET_ORDER'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 /*
@@ -21,6 +22,11 @@ export const VisibilityFilters = {
 export const addTodo = text => ({ type: ADD_TODO, text })
 export const toggleTodo = id => ({ type: TOGGLE_TODO, id })
 export const deleteTodo = id => ({ type: DELETE_TODO, id })
+export const resetTodoOrder = ({ oldIndex, newIndex }) => ({
+  type: RESET_ORDER,
+  oldIndex,
+  newIndex
+})
 export const setVisibilityFilter = filter => ({
   type: SET_VISIBILITY_FILTER,
   filter

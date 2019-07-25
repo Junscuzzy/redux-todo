@@ -16,13 +16,19 @@ const AddTodo = ({ addTodo }) => {
         <input
           type="text"
           value={text}
-          className="f4 pa2 w-100 m-auto dib"
+          style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+          className="f4 pa2 w-100 m-auto dib br2 b--dark-green"
           placeholder="Add item and type Enter..."
           onChange={e => setText(e.target.value)}
           onKeyUp={e => e.keyCode === 13 && submit()}
         />
       </div>
-      <button className={button} type="submit" onClick={() => submit()}>
+      <button
+        className={button}
+        style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
+        type="submit"
+        onClick={() => submit()}
+      >
         Add
       </button>
     </div>

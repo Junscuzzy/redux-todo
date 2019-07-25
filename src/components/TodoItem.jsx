@@ -1,28 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Checkbox from './Checkbox'
+
 const buttonReset = {
   background: 'none',
   border: 'none'
 }
 
 const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => (
-  <li className="f3 pv1 flex justify-between">
-    <button
-      type="button"
-      className="link dim pointer"
-      onClick={() => toggleTodo(id)}
-      style={{
-        ...buttonReset,
-        textDecoration: completed ? 'line-through' : 'none'
-      }}
-    >
-      {`${index + 1}. ${text}`}
-    </button>
+  <li
+    className="flex justify-between pa2 bg-light-yellow"
+    style={{ cursor: 'pointer' }}
+  >
+    <div className="flex">
+      <Checkbox onCheck={() => toggleTodo(id)} checked={completed} />
+      <span
+        className="link dim f3"
+        style={{ textDecoration: completed ? 'line-through' : 'none' }}
+      >
+        {`${index + 1}. ${text}`}
+      </span>
+    </div>
+
     <button
       type="button"
       style={buttonReset}
-      className="link dim pointer"
+      className="link dim f3 pointer"
       title="Delete"
       onClick={() => deleteTodo(id)}
     >
@@ -32,7 +36,7 @@ const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => (
 )
 
 TodoItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,

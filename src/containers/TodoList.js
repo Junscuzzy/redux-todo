@@ -1,17 +1,23 @@
 import { connect } from 'react-redux'
 
 import TodoList from '../components/TodoList'
-import { deleteTodo, toggleTodo } from '../actions'
+import { deleteTodo, toggleTodo, resetTodoOrder } from '../actions'
 
 const getVisibleTodos = (todos, filter) => {
+  const sortedTodos = todos.sort((a, b) => {
+    if (a.index > b.index) return 1
+    if (a.index < b.index) return -1
+    return 0
+  })
+
   switch (filter) {
     case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed)
+      return sortedTodos.filter(t => t.completed)
     case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed)
+      return sortedTodos.filter(t => !t.completed)
     case 'SHOW_ALL':
     default:
-      return todos
+      return sortedTodos
   }
 }
 
@@ -21,7 +27,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   deleteTodo,
-  toggleTodo
+  toggleTodo,
+  resetTodoOrder
 }
 
 export default connect(
