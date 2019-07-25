@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { setVisibilityFilter } from '../actions'
+import { setVisibilityFilter, clearCompleted } from '../actions'
 import FilterBar from '../components/FilterBar'
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
   }
 })
 
-const mapDispatchToProps = { setVisibilityFilter }
+const mapDispatchToProps = { setVisibilityFilter, clearCompleted }
 
 export default connect(
   mapStateToProps,

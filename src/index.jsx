@@ -7,7 +7,7 @@ import logger from 'redux-logger'
 import rootReducer from './reducers'
 import App from './components/App'
 import './index.css'
-import * as serviceWorker from './utils/serviceWorker'
+import * as serviceWorker from './serviceWorker'
 
 // Log the state in browser console only on dev
 const middlewares = []

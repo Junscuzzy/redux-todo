@@ -1,5 +1,11 @@
 import arrayMove from 'array-move'
-import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, RESET_ORDER } from '../actions'
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  TOGGLE_TODO,
+  RESET_ORDER,
+  CLEAR_COMPLETED
+} from '../actions'
 
 const initialTodo = [
   { id: 0, text: 'Learn about Redux actions', completed: true, index: 0 },
@@ -8,9 +14,16 @@ const initialTodo = [
 ]
 
 // Generate unique id from index
-function createId(state) {
-  return state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1
-}
+const createId = state =>
+  [...state].reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1
+
+// Sort from current index (ex: 0, 1, 4, 5)
+// const sortTodos = state =>
+//   [...state].sort((a, b) => (a.index > b.index ? 1 : -1))
+
+// Reset index from 0 with increment
+const resetIndex = state =>
+  [...state].map((item, index) => ({ ...item, index }))
 
 const addTodoItem = (state, action) => ({
   id: createId(state),
@@ -23,6 +36,7 @@ export default function todos(state = initialTodo, action) {
   switch (action.type) {
     case ADD_TODO:
       return [addTodoItem(state, action), ...state]
+
     case TOGGLE_TODO:
       return state.map(todo => {
         if (todo.id === action.id) {
@@ -30,12 +44,18 @@ export default function todos(state = initialTodo, action) {
         }
         return todo
       })
+
     case DELETE_TODO:
-      return [...state].filter(el => el.id !== action.id)
+      return resetIndex([...state].filter(el => el.id !== action.id))
+
     case RESET_ORDER:
-      return arrayMove(state, action.oldIndex, action.newIndex).map(
+      return arrayMove(resetIndex(state), action.oldIndex, action.newIndex).map(
         (todo, index) => ({ ...todo, index })
       )
+
+    case CLEAR_COMPLETED:
+      return [...state].filter(el => el.completed === false)
+
     default:
       return state
   }

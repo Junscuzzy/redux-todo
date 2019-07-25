@@ -13,7 +13,7 @@ const App = () => (
       className="vh-100 vw-100 cover bg-center flex flex-column justify-center"
       style={{ backgroundImage: `url(${Background})` }}
     >
-      <div className="ph4 pv5 bg-light-yellow near-black shadow-5 br4 w-90 mw6 center">
+      <div className="ph4-ns pa2 pt4-ns bg-light-yellow near-black shadow-5 br4 w-90 mw6 center">
         <h1 className="f1 tc">To do List</h1>
         <AddTodo />
         <TodoList />

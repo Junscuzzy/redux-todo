@@ -20,7 +20,7 @@ const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => {
       <div
         className={`flex justify-between pa2 br2 ${hover ? 'shadow-1' : ''}`}
       >
-        <div className="flex">
+        <div className="flex w-90">
           <Checkbox onCheck={() => toggleTodo(id)} checked={completed} />
           <span
             className="link dim f3"
@@ -33,17 +33,19 @@ const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => {
           </span>
         </div>
 
-        {hover && (
-          <button
-            type="button"
-            style={buttonReset}
-            className="link f3 pointer light-red"
-            title="Delete"
-            onClick={() => deleteTodo(id)}
-          >
-            x
-          </button>
-        )}
+        <div className="w-10 flex justify-end">
+          {hover && (
+            <button
+              type="button"
+              style={buttonReset}
+              className="link f3 pointer light-red"
+              title="Delete"
+              onClick={() => deleteTodo(id)}
+            >
+              x
+            </button>
+          )}
+        </div>
       </div>
     </li>
   )
