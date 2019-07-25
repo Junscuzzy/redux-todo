@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const FilterLink = ({ label, action, onClick, filter }) => (
-  <button
-    type="button"
-    className="f5 br2 pa1 pr2 mh1"
-    style={{
-      background: 'none',
-      border: filter === action ? '1px solid' : 'none'
-    }}
-    onClick={() => onClick(action)}
-  >
-    {label}
-  </button>
-)
+import theme from '../theme'
+
+const { red, grey } = theme.colors
+
+const getButtonStyle = (active, hover) => {
+  const variants = {
+    base: { color: grey, backgroundColor: 'white' },
+    active: { color: 'white', backgroundColor: red },
+    baseHover: { color: 'white', backgroundColor: 'transparent' }
+  }
+  if (active) return variants.active
+  if (hover) return variants.baseHover
+  return variants.base
+}
+
+const FilterLink = ({ label, action, filter, onClick }) => {
+  const [hover, setHover] = useState(false)
+  const active = filter === action
+  return (
+    <button
+      type="button"
+      className={`f7 pa2 ma2 br3 c-shadow ${!active && `pointer`}`}
+      style={{
+        ...getButtonStyle(active, hover),
+        border: 'none'
+      }}
+      onClick={() => onClick(action)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      {label}
+    </button>
+  )
+}
 
 FilterLink.propTypes = {
   label: PropTypes.string.isRequired,

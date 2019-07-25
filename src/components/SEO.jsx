@@ -9,7 +9,7 @@ const SEO = ({ title, description }) => (
     <meta name="description" content={description} />
 
     <link
-      href="https://fonts.googleapis.com/css?family=Caveat&display=swap"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap"
       rel="stylesheet"
     />
     <link

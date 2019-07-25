@@ -6,8 +6,8 @@ const Checkbox = ({ onCheck, checked }) => (
     <button
       type="button"
       onClick={() => onCheck()}
-      className={`dib relative pointer pa2 mr3 br2 b--dark-green bg-${
-        checked ? 'dark-green' : 'white'
+      className={`dib pointer pa2 mr3 br2 c-red ${
+        checked ? 'c-bg-red' : 'bg-white'
       } `}
     />
   </span>

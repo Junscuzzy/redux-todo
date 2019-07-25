@@ -7,8 +7,8 @@ import TodoItem from './TodoItem'
 const SortableItem = SortableElement(props => <TodoItem {...props} />)
 
 const SortableList = SortableContainer(({ items, toggleTodo, deleteTodo }) => (
-  <div style={{ minHeight: '35vh' }}>
-    <ul className="list pa0 nh2">
+  <div style={{ minHeight: '50vh' }}>
+    <ul className="list pa0 nh2 pv4">
       {items.map(({ text, id, index, ...rest }) => (
         <SortableItem
           {...rest}

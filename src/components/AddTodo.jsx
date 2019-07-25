@@ -9,15 +9,17 @@ const AddTodo = ({ addTodo }) => {
   }
 
   return (
-    <input
-      type="text"
-      value={text}
-      style={{ border: 0 }}
-      className="f4 pa2 w-100 m-auto dib br2 shadow-3 b--dark-green"
-      placeholder="Add item and type Enter..."
-      onChange={e => setText(e.target.value)}
-      onKeyUp={e => e.keyCode === 13 && submit()}
-    />
+    <div className="w-100 pv4 flex justify-center">
+      <input
+        type="text"
+        value={text}
+        style={{ border: 0 }}
+        className="f6 h2 ph3 w-80 br2 c-shadow"
+        placeholder="Add item and type Enter..."
+        onChange={e => setText(e.target.value)}
+        onKeyUp={e => e.keyCode === 13 && submit()}
+      />
+    </div>
   )
 }
 

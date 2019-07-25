@@ -1,9 +1,23 @@
+:root {
+  --red: #fe786d;
+  --pink: rgba(254, 120, 109, 0.58);
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Caveat', cursive;
+  font-family: 'Open Sans', sans-serif;
 }
 
 button:focus {
   outline: none!important;
+}
+
+.c-pink { color: var(--pink); }
+.c-bg-pink { background-color: var(--pink); }
+.c-red { color: var(--red); }
+.c-bg-red { background-color: var(--red); }
+
+.c-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }

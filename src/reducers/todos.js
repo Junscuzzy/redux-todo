@@ -8,9 +8,10 @@ import {
 } from '../actions'
 
 const initialTodo = [
-  { id: 0, text: 'Learn about Redux actions', completed: true, index: 0 },
-  { id: 1, text: 'Learn about Redux reducers', completed: false, index: 1 },
-  { id: 2, text: 'Learn about Redux store', completed: false, index: 2 }
+  { id: 0, text: 'Learn about actions', completed: true, index: 0 },
+  { id: 1, text: 'Learn about reducers', completed: false, index: 1 },
+  { id: 2, text: 'Learn about Redux store', completed: false, index: 2 },
+  { id: 3, text: 'Learn about React Hook', completed: false, index: 3 }
 ]
 
 // Generate unique id from index
@@ -54,7 +55,7 @@ export default function todos(state = initialTodo, action) {
       )
 
     case CLEAR_COMPLETED:
-      return [...state].filter(el => el.completed === false)
+      return resetIndex([...state].filter(el => el.completed === false))
 
     default:
       return state

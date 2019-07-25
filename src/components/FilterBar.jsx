@@ -9,13 +9,13 @@ const { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } = VisibilityFilters
 const FilterBar = ({ filter, count, setVisibilityFilter, clearCompleted }) => {
   const select = action => setVisibilityFilter(action)
   return (
-    <div className="flex flex-wrap justify-between">
-      <div className="w-50 w-25-ns flex justify-center flex-column order-1">
-        <span className="f5 lh-solid m-auto">
-          {count.active && `${count.active} item left`}
+    <div className="flex flex-wrap justify-between pv4">
+      <div className="flex flex-column justify-center">
+        <span className="f6 white b">
+          {count.active > 0 ? `${count.active} left` : `All done :)`}
         </span>
       </div>
-      <div className="w-100 w-50-ns order-3 order-2-ns pv2 flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-end">
         <FilterLink
           label="All"
           action={SHOW_ALL}
@@ -23,7 +23,7 @@ const FilterBar = ({ filter, count, setVisibilityFilter, clearCompleted }) => {
           onClick={action => select(action)}
         />
         <FilterLink
-          label="Active"
+          label="Left"
           action={SHOW_ACTIVE}
           filter={filter}
           onClick={action => select(action)}
@@ -34,10 +34,8 @@ const FilterBar = ({ filter, count, setVisibilityFilter, clearCompleted }) => {
           filter={filter}
           onClick={action => select(action)}
         />
-      </div>
-      <div className="w-50 w-25-ns flex justify-end order-2 order-3-ns">
         <FilterLink
-          label="Clear Completed"
+          label="Clear"
           action={CLEAR_COMPLETED}
           filter={filter}
           onClick={() => clearCompleted()}
