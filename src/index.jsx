@@ -8,13 +8,6 @@ import rootReducer from './reducers'
 import App from './components/App'
 import './index.css'
 import * as serviceWorker from './utils/serviceWorker'
-import {
-  addTodo
-  // 	toggleTodo,
-  // 	setVisibilityFilter,
-  // 	VisibilityFilters,
-  // 	deleteTodo
-} from './actions'
 
 // Log the state in browser console only on dev
 const middlewares = []
@@ -24,14 +17,6 @@ if (process.env.NODE_ENV === `development`) {
 
 // Create the Redux store
 const store = createStore(rootReducer, applyMiddleware(...middlewares))
-
-// Dispatch some actions
-store.dispatch(addTodo('Learn about Redux actions'))
-store.dispatch(addTodo('Learn about Redux reducers'))
-store.dispatch(addTodo('Learn about Redux store'))
-// store.dispatch(toggleTodo(0))
-// store.dispatch(toggleTodo(1))
-// store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
 
 ReactDOM.render(
   <Provider store={store}>

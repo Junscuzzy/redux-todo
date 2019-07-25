@@ -8,7 +8,7 @@ const SortableItem = SortableElement(props => <TodoItem {...props} />)
 
 const SortableList = SortableContainer(({ items, toggleTodo, deleteTodo }) => (
   <div style={{ minHeight: '35vh' }}>
-    <ul className="list pa0 bg-washed-yellow nh2">
+    <ul className="list pa0 nh2">
       {items.map(({ text, id, index, ...rest }) => (
         <SortableItem
           {...rest}
@@ -30,6 +30,7 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, resetTodoOrder }) => (
     onSortEnd={e => resetTodoOrder(e)}
     toggleTodo={id => toggleTodo(id)}
     deleteTodo={id => deleteTodo(id)}
+    pressDelay={0}
   />
 )
 

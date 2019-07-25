@@ -23,6 +23,7 @@
         "no-absolute-path": 0
     },
     "globals": {
-        "windows": true
+        "windows": true,
+        "process": true
     }
 }

@@ -1,5 +1,11 @@
-import { arrayMove } from 'react-sortable-hoc'
+import arrayMove from 'array-move'
 import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, RESET_ORDER } from '../actions'
+
+const initialTodo = [
+  { id: 0, text: 'Learn about Redux actions', completed: true, index: 0 },
+  { id: 1, text: 'Learn about Redux reducers', completed: false, index: 1 },
+  { id: 2, text: 'Learn about Redux store', completed: false, index: 2 }
+]
 
 // Generate unique id from index
 function createId(state) {
@@ -13,7 +19,7 @@ const addTodoItem = (state, action) => ({
   index: createId(state)
 })
 
-export default function todos(state = [], action) {
+export default function todos(state = initialTodo, action) {
   switch (action.type) {
     case ADD_TODO:
       return [addTodoItem(state, action), ...state]
