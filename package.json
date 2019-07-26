@@ -1,6 +1,6 @@
 {
   "name": "redux-todo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://Junscuzzy.github.io/redux-todo",
   "dependencies": {
     "array-move": "^2.1.0",
