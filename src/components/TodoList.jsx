@@ -30,7 +30,8 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, resetTodoOrder }) => (
     onSortEnd={e => resetTodoOrder(e)}
     toggleTodo={id => toggleTodo(id)}
     deleteTodo={id => deleteTodo(id)}
-    pressDelay={0}
+    pressDelay={150}
+    helperClass="sortered"
   />
 )
 

@@ -13,7 +13,7 @@ const AddTodo = ({ addTodo }) => {
       <input
         type="text"
         value={text}
-        style={{ border: 0 }}
+        style={{ border: 0, outline: 'none' }}
         className="f6 h2 ph3 w-80 br2 c-shadow"
         placeholder="Add item and type Enter..."
         onChange={e => setText(e.target.value)}

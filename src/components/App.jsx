@@ -9,16 +9,16 @@ import SEO from './SEO'
 const App = () => (
   <>
     <SEO />
-    <MediaQuery minDeviceWidth="30em">
+    <MediaQuery minWidth="30em">
       {matches => (
         <main
-          className={`vh-100 vw-100 flex flex-column justify-center ${!matches &&
+          className={`min-vh-100 flex justify-center items-center pa4-ns ${!matches &&
             `c-bg-pink`}`}
         >
           <div
-            className={`ph3 ph4-ns pt3 w-90 center ${
-              matches ? `br4 shadow-5 mw6 pa2 c-bg-pink ` : ``
-            }`}
+            id="App"
+            className={`ph3 ph4-ns pv3 w-100 ${matches &&
+              `br3 c-shadow mw6 pa2 c-bg-pink`}`}
           >
             <AddTodo />
             <h1 className="f3 ttu tr c-red">To do things</h1>

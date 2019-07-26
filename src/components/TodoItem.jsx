@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
 
-import Checkbox from './Checkbox'
 import theme from '../theme'
 
 const buttonReset = {
@@ -28,50 +27,40 @@ const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => {
           id={`todo-${id}`}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          className="pv1 list white pointer"
+          className="pv1 flex justify-between list white br2 pointer"
+          style={{ userSelect: 'none' }}
         >
-          <div
-            className={`flex justify-between pa1 dib flex br2 ${
-              hover ? 'c-shadow' : ''
+          <span
+            onClick={() => toggleTodo(id)}
+            className={`relative pa1 link f5 ttu white ${
+              index < 3 ? `fw7` : `fw4`
             }`}
           >
-            <div className="flex w-90">
-              <Checkbox onCheck={() => toggleTodo(id)} checked={completed} />
+            {todoText(matches)}
+            {completed && (
               <span
-                className="c-red relative fw9 pa1"
-                style={{ textDecoration: completed ? 'line-through' : 'none' }}
-              >
-                <span
-                  className={`link f5 ttu white ${index < 3 ? `fw7` : `fw4`}`}
-                >
-                  {todoText(matches)}
-                </span>
-                {completed && (
-                  <span
-                    style={{
-                      borderBottom: '3px solid',
-                      top: '50%',
-                      transform: 'translateY(-50%)'
-                    }}
-                    className="c-red absolute left-0 w-100"
-                  />
-                )}
-              </span>
-            </div>
+                style={{
+                  borderBottom: '3px solid',
+                  top: '50%',
+                  transform: 'translateY(-50%)'
+                }}
+                className="c-red absolute left-0 w-100"
+              />
+            )}
+          </span>
 
-            <div className="w-10 flex justify-end">
-              {hover && (
-                <button
-                  type="button"
-                  style={{ ...buttonReset, color: theme.colors.grey }}
-                  className="link f5 pointer yellow"
-                  title="Delete"
-                  onClick={() => deleteTodo(id)}
-                >
-                  x
-                </button>
-              )}
-            </div>
+          <div className="w-10 flex justify-end">
+            {hover && (
+              <button
+                type="button"
+                style={{ ...buttonReset, color: theme.colors.grey }}
+                className="link f5 pointer yellow"
+                title="Delete"
+                onClick={() => deleteTodo(id)}
+              >
+                x
+              </button>
+            )}
           </div>
         </li>
       )}

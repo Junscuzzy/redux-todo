@@ -1,8 +1,10 @@
+/* Variables */
 :root {
   --red: #fe786d;
   --pink: rgba(254, 120, 109, 0.58);
 }
 
+/* Native HTML tags */
 html, body {
   margin: 0;
   padding: 0;
@@ -13,11 +15,13 @@ button:focus {
   outline: none!important;
 }
 
+/* Utils - Colors */
 .c-pink { color: var(--pink); }
 .c-bg-pink { background-color: var(--pink); }
 .c-red { color: var(--red); }
 .c-bg-red { background-color: var(--red); }
 
-.c-shadow {
+/* Utils - rest */
+.c-shadow, .sortered {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }

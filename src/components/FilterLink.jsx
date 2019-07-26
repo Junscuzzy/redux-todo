@@ -22,7 +22,7 @@ const FilterLink = ({ label, action, filter, onClick }) => {
   return (
     <button
       type="button"
-      className={`f7 pa2 ma2 br3 c-shadow ${!active && `pointer`}`}
+      className={`f7 pa2 ma1 ma2-ns br3 c-shadow ${!active && `pointer`}`}
       style={{
         ...getButtonStyle(active, hover),
         border: 'none'
