@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const AddTodo = ({ addTodo }) => {
   const [text, setText] = useState('')
   const submit = () => {
-    addTodo(text)
+    if (text.trim() !== '') addTodo(text)
     setText('')
   }
 

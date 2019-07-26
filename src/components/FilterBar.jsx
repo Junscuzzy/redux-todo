@@ -6,48 +6,40 @@ import FilterLink from './FilterLink'
 
 const { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } = VisibilityFilters
 
-const FilterBar = ({ filter, count, setVisibilityFilter, clearCompleted }) => {
+const FilterBar = ({ filter, setVisibilityFilter, clearCompleted }) => {
   const select = action => setVisibilityFilter(action)
   return (
-    <div className="flex flex-wrap justify-between pv4">
-      <div className="flex items-center">
-        <span className="f6 white b">
-          {count.active > 0 ? `${count.active} left` : `All done :)`}
-        </span>
-      </div>
-      <div className="flex flex-wrap justify-end-ns justify-between w-auto">
-        <FilterLink
-          label="All"
-          action={SHOW_ALL}
-          filter={filter}
-          onClick={action => select(action)}
-        />
-        <FilterLink
-          label="Left"
-          action={SHOW_ACTIVE}
-          filter={filter}
-          onClick={action => select(action)}
-        />
-        <FilterLink
-          label="Completed"
-          action={SHOW_COMPLETED}
-          filter={filter}
-          onClick={action => select(action)}
-        />
-        <FilterLink
-          label="Clear"
-          action={CLEAR_COMPLETED}
-          filter={filter}
-          onClick={() => clearCompleted()}
-        />
-      </div>
+    <div className="flex flex-wrap justify-end pv4">
+      <FilterLink
+        label="All"
+        action={SHOW_ALL}
+        filter={filter}
+        onClick={action => select(action)}
+      />
+      <FilterLink
+        label="Left"
+        action={SHOW_ACTIVE}
+        filter={filter}
+        onClick={action => select(action)}
+      />
+      <FilterLink
+        label="Completed"
+        action={SHOW_COMPLETED}
+        filter={filter}
+        onClick={action => select(action)}
+      />
+      <FilterLink
+        label="Clear"
+        action={CLEAR_COMPLETED}
+        filter={filter}
+        onClick={() => clearCompleted()}
+      />
     </div>
   )
 }
 
 FilterBar.propTypes = {
   filter: PropTypes.string.isRequired,
-  count: PropTypes.objectOf(PropTypes.number).isRequired,
   setVisibilityFilter: PropTypes.func.isRequired,
   clearCompleted: PropTypes.func.isRequired
 }

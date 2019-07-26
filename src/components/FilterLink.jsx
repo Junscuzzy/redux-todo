@@ -25,7 +25,8 @@ const FilterLink = ({ label, action, filter, onClick }) => {
       className={`f7 pa2 ma1 ma2-ns br3 c-shadow ${!active && `pointer`}`}
       style={{
         ...getButtonStyle(active, hover),
-        border: 'none'
+        border: 'none',
+        transition: 'all 200ms'
       }}
       onClick={() => onClick(action)}
       onMouseEnter={() => setHover(true)}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
+import { Spring } from 'react-spring/renderprops'
 
 import theme from '../theme'
 
@@ -23,46 +24,54 @@ const TodoItem = ({ id, text, completed, index, toggleTodo, deleteTodo }) => {
   return (
     <MediaQuery minWidth="30em">
       {matches => (
-        <li
-          id={`todo-${id}`}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="pv1 flex justify-between list white br2 pointer"
-          style={{ userSelect: 'none' }}
-        >
-          <span
-            onClick={() => toggleTodo(id)}
-            className={`relative pa1 link f5 ttu white ${
-              index < 3 ? `fw7` : `fw4`
-            }`}
-          >
-            {todoText(matches)}
-            {completed && (
-              <span
-                style={{
-                  borderBottom: '3px solid',
-                  top: '50%',
-                  transform: 'translateY(-50%)'
-                }}
-                className="c-red absolute left-0 w-100"
-              />
-            )}
-          </span>
-
-          <div className="w-10 flex justify-end">
-            {hover && (
-              <button
-                type="button"
-                style={{ ...buttonReset, color: theme.colors.grey }}
-                className="link f5 pointer yellow"
-                title="Delete"
-                onClick={() => deleteTodo(id)}
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {props => (
+            <div style={props}>
+              <li
+                id={`todo-${id}`}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                className="pv1 flex justify-between list white br2 pointer"
+                style={{ userSelect: 'none' }}
               >
-                x
-              </button>
-            )}
-          </div>
-        </li>
+                <button
+                  type="button"
+                  style={{ ...buttonReset }}
+                  onClick={() => toggleTodo(id)}
+                  className={`relative pa1 link f5 ttu white ${
+                    index < 3 ? `fw7` : `fw4`
+                  }`}
+                >
+                  {todoText(matches)}
+                  {completed && (
+                    <span
+                      style={{
+                        borderBottom: '3px solid',
+                        top: '50%',
+                        transform: 'translateY(-50%)'
+                      }}
+                      className="c-red absolute left-0 w-100"
+                    />
+                  )}
+                </button>
+
+                <div className="w-10 flex justify-end">
+                  {hover && (
+                    <button
+                      type="button"
+                      style={{ ...buttonReset, color: theme.colors.grey }}
+                      className="link f5 pointer yellow"
+                      title="Delete"
+                      onClick={() => deleteTodo(id)}
+                    >
+                      x
+                    </button>
+                  )}
+                </div>
+              </li>
+            </div>
+          )}
+        </Spring>
       )}
     </MediaQuery>
   )

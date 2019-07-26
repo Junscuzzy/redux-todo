@@ -4,12 +4,7 @@ import { setVisibilityFilter, clearCompleted } from '../actions'
 import FilterBar from '../components/FilterBar'
 
 const mapStateToProps = state => ({
-  filter: state.visibilityFilter,
-  count: {
-    all: state.todos.length,
-    active: state.todos.filter(el => !el.completed).length,
-    completed: state.todos.filter(el => el.completed).length
-  }
+  filter: state.visibilityFilter
 })
 
 const mapDispatchToProps = { setVisibilityFilter, clearCompleted }
